@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.opentrends003.mvp.R;
 import com.example.opentrends003.mvp.model.UserModel;
@@ -69,4 +70,6 @@ public class HomeFragment extends BaseFragment implements HomePresenterContract.
         mprogressBar.setVisibility(View.INVISIBLE);
         userAdapter.setData(list);
     }
+
+
 }

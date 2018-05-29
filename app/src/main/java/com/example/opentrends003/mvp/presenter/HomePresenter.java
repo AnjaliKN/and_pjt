@@ -33,5 +33,6 @@ public class HomePresenter implements HomePresenterContract.Presenter {
     public void setRecyclerData(List<UserModel> list) {
         mView.setRecyclerViewData(list);
     }
+
 }
 

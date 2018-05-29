@@ -16,11 +16,13 @@ public interface HomePresenterContract {
         void startPresenter(HomePresenter presenter);
 
         void setRecyclerViewData(List<UserModel> list);
+
     }
 
     interface Presenter {
         void getData(String page);
 
         void setRecyclerData(List<UserModel> list);
+
     }
 }

@@ -34,13 +34,13 @@ public class UseCase implements IUsecase.UsecaseInterface {
     @Override
     public void setData(Response<UserResponse> response) {
         List<Datum> dataList = response.body().getData();
-        for (int i = 0; i < dataList.size(); i++) {
-            UserModel userModel = new UserModel();
-            userModel.setFirstName(dataList.get(i).getFirstName());
-            userModel.setLastName(dataList.get(i).getLastName());
-            list.add(userModel);
-        }
-        mPresenter.setRecyclerData(list);
+            for (int i = 0; i < dataList.size(); i++) {
+                UserModel userModel = new UserModel();
+                userModel.setFirstName(dataList.get(i).getFirstName());
+                userModel.setLastName(dataList.get(i).getLastName());
+                list.add(userModel);
+            }
+            mPresenter.setRecyclerData(list);
     }
 
     @Override
