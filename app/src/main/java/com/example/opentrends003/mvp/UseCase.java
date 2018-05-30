@@ -34,6 +34,7 @@ public class UseCase implements IUsecase.UsecaseInterface {
     @Override
     public void setData(Response<UserResponse> response) {
         List<Datum> dataList = response.body().getData();
+        if(dataList!=null) {
             for (int i = 0; i < dataList.size(); i++) {
                 UserModel userModel = new UserModel();
                 userModel.setFirstName(dataList.get(i).getFirstName());
@@ -41,6 +42,10 @@ public class UseCase implements IUsecase.UsecaseInterface {
                 list.add(userModel);
             }
             mPresenter.setRecyclerData(list);
+        }
+        else {
+            mPresenter.setRecyclerData(new ArrayList<UserModel>());
+        }
     }
 
     @Override

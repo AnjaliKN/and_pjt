@@ -22,7 +22,7 @@ public class UserResponse {
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
-    @SerializedName("repo")
+    @SerializedName("data")
     @Expose
     private List<Datum> data = null;
 
