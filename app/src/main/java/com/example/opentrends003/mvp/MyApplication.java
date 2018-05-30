@@ -7,6 +7,8 @@ import com.example.opentrends003.mvp.dagger.AppModule;
 import com.example.opentrends003.mvp.dagger.DaggerAppComponent;
 import com.example.opentrends003.mvp.dagger.PresenterComponent;
 import com.example.opentrends003.mvp.dagger.PresenterModule;
+import com.example.opentrends003.mvp.dagger.UsecaseComponent;
+import com.example.opentrends003.mvp.dagger.UsecaseModule;
 import com.example.opentrends003.mvp.retrofit.ApiService;
 
 import retrofit2.Retrofit;
@@ -20,6 +22,12 @@ public class MyApplication extends Application {
     public static ApiService service;
     private AppComponent appComponent;
     private PresenterComponent presenterComponent;
+    private UsecaseComponent usecaseComponent;
+
+    public UsecaseComponent getUsecaseComponent() {
+        return usecaseComponent;
+    }
+
 
     public AppComponent getAppComponent() {
         return appComponent;
@@ -33,7 +41,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         appComponent = DaggerAppComponent.builder().appModule(new AppModule()).build();
-        setBuilder();
+        setPresenterBuilder();
+        setUsecaseBuilder();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://reqres.in/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -43,8 +52,13 @@ public class MyApplication extends Application {
 
     }
 
-    public void setBuilder() {
-        presenterComponent = appComponent.getBuilder().presenterModule(new PresenterModule()).build();
+    public void setPresenterBuilder() {
+        presenterComponent = appComponent.getPresenterBuilder().presenterModule(new PresenterModule()).build();
+    }
+
+    public void setUsecaseBuilder() {
+        usecaseComponent=appComponent.getUsecaseBuilder().usecaserModule(new UsecaseModule()).build();
+
     }
 
 }

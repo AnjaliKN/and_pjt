@@ -15,7 +15,10 @@ import retrofit2.Response;
 public interface IUsecase {
     interface UsecaseInterface {
         void setData(Response<UserResponse> response);
+
         void getApi(String page);
+
         void setPresenter(HomePresenterContract.Presenter presenter);
+
     }
 }

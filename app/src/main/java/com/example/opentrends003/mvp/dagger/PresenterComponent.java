@@ -1,6 +1,5 @@
 package com.example.opentrends003.mvp.dagger;
 
-import com.example.opentrends003.mvp.view.activity.HomeActivity;
 import com.example.opentrends003.mvp.view.fragment.HomeFragment;
 
 import dagger.Subcomponent;
@@ -15,7 +14,6 @@ public interface PresenterComponent {
     @Subcomponent.Builder
     interface Builder {
         Builder presenterModule(PresenterModule presenterModule);
-
         PresenterComponent build();
     }
 }

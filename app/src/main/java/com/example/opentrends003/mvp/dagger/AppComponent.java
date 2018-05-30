@@ -7,6 +7,7 @@ import dagger.Component;
  */
 @Component(modules = {AppModule.class})
 public interface AppComponent {
-    PresenterComponent.Builder getBuilder();
+    PresenterComponent.Builder getPresenterBuilder();
+    UsecaseComponent.Builder getUsecaseBuilder();
 
 }

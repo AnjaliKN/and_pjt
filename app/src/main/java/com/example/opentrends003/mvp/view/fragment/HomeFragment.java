@@ -8,14 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.opentrends003.mvp.MyApplication;
 import com.example.opentrends003.mvp.R;
+import com.example.opentrends003.mvp.dagger.PresenterComponent;
+import com.example.opentrends003.mvp.dagger.UsecaseComponent;
 import com.example.opentrends003.mvp.model.UserModel;
-import com.example.opentrends003.mvp.presenter.HomePresenter;
 import com.example.opentrends003.mvp.presenter.contract.HomePresenterContract;
-import com.example.opentrends003.mvp.view.activity.HomeActivity;
 import com.example.opentrends003.mvp.view.adapter.UserAdapter;
 
 import java.util.List;
@@ -32,6 +31,7 @@ public class HomeFragment extends BaseFragment implements HomePresenterContract.
     RecyclerView mRecyclerView;
     private UserAdapter userAdapter;
     private ProgressBar mprogressBar;
+    UsecaseComponent usecaseComponent;
     @Inject
     HomePresenterContract.Presenter mPresenter;
 
@@ -44,14 +44,18 @@ public class HomeFragment extends BaseFragment implements HomePresenterContract.
         return R.layout.fragment_home;
     }
 
+    @Override
     public void inject() {
         ((MyApplication) getActivity().getApplication()).getPresenterComponent().inject(this);
+        usecaseComponent = ((MyApplication) getActivity().getApplication()).getUsecaseComponent();
     }
+
 
     @Override
     public void initViews() {
         inject();
         mPresenter.setView(this);
+        mPresenter.setComponent(usecaseComponent);
 
         mprogressBar = getRootView().findViewById(R.id.progressbar);
         clickMeButton = getRootView().findViewById(R.id.button);

@@ -16,10 +16,8 @@ public class Repository implements IRepo.repo {
     private IUsecase.UsecaseInterface domaiInterface;
 
     public Repository() {
-        //this.domaiInterface = new UseCase();
-    }
 
-    //List<UserModel> list = new ArrayList<>();
+    }
 
     @Override
     public void callApi(String page) {
