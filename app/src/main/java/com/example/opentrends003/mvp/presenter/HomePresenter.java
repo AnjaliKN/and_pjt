@@ -16,10 +16,11 @@ public class HomePresenter implements HomePresenterContract.Presenter {
     private HomePresenterContract.View mView;
     private IUsecase.UsecaseInterface domaiInterface;
 
+    public void setView(HomePresenterContract.View mView) {
+        this.mView = mView;
+    }
 
-    public HomePresenter(HomePresenterContract.View view) {
-        mView = view;
-        mView.startPresenter(this);
+    public HomePresenter() {
         this.domaiInterface = new UseCase();
         domaiInterface.setPresenter(this);
     }

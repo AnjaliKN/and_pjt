@@ -2,6 +2,7 @@ package com.example.opentrends003.mvp.presenter.contract;
 
 import com.example.opentrends003.mvp.model.UserModel;
 import com.example.opentrends003.mvp.presenter.HomePresenter;
+import com.example.opentrends003.mvp.view.fragment.HomeFragment;
 
 import java.util.List;
 
@@ -13,7 +14,6 @@ public interface HomePresenterContract {
 
 
     interface View {
-        void startPresenter(HomePresenter presenter);
 
         void setRecyclerViewData(List<UserModel> list);
 
@@ -23,6 +23,8 @@ public interface HomePresenterContract {
         void getData(String page);
 
         void setRecyclerData(List<UserModel> list);
+
+        void setView(View view);
 
     }
 }

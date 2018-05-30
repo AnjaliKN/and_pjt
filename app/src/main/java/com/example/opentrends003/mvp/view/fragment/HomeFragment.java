@@ -10,33 +10,33 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.opentrends003.mvp.MyApplication;
 import com.example.opentrends003.mvp.R;
 import com.example.opentrends003.mvp.model.UserModel;
 import com.example.opentrends003.mvp.presenter.HomePresenter;
 import com.example.opentrends003.mvp.presenter.contract.HomePresenterContract;
+import com.example.opentrends003.mvp.view.activity.HomeActivity;
 import com.example.opentrends003.mvp.view.adapter.UserAdapter;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends BaseFragment implements HomePresenterContract.View {
-    private HomePresenterContract.Presenter mPresenter;
     private Button clickMeButton;
     private EditText page;
     private LinearLayoutManager layoutManager;
     RecyclerView mRecyclerView;
     private UserAdapter userAdapter;
     private ProgressBar mprogressBar;
+    @Inject
+    HomePresenterContract.Presenter mPresenter;
 
     public HomeFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void startPresenter(HomePresenter presenter) {
-        mPresenter = presenter;
     }
 
     @Override
@@ -44,8 +44,15 @@ public class HomeFragment extends BaseFragment implements HomePresenterContract.
         return R.layout.fragment_home;
     }
 
+    public void inject() {
+        ((MyApplication) getActivity().getApplication()).getPresenterComponent().inject(this);
+    }
+
     @Override
     public void initViews() {
+        inject();
+        mPresenter.setView(this);
+
         mprogressBar = getRootView().findViewById(R.id.progressbar);
         clickMeButton = getRootView().findViewById(R.id.button);
         page = getRootView().findViewById(R.id.page);
